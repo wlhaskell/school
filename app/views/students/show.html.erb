@@ -20,5 +20,9 @@
   <%= @student.bio %>
 </p>
 
+<% @teachers.each do |teacher| %>
+	<% if teacher.name == @student.teacher %>
+<% end %>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>

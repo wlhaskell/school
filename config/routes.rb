@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   resources :pets
   resources :teachers
   resources :students
-  get 'welcome/index'
+
+  get 'welcome' => 'welcome#index'
+
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
