@@ -2,6 +2,13 @@
 
 <h1>Our Great Students!</h1>
 
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All Grades" %></li>
+  <% 5.times do |grade| %>
+    <li><%= link_to "Grade " + (grade+1).to_s, students_path(grade: grade+1) %></li>
+  <% end %>
+</ul>
+
 <div class = "row">
     <% @students.each do |student| %>
       <div class = "col-md-4">

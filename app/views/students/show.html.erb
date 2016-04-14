@@ -1,28 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @student.grade %>
-</p>
-
-<p>
-  <strong>Teacher:</strong>
-  <%= @student.teacher %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @student.bio %>
-</p>
-
 <% @teachers.each do |teacher| %>
 	<% if teacher.name == @student.teacher %>
+		<% @student.update(:classroom => teacher.classroom) %>
+		<% @student.update(:grade => teacher.grade) %>
+	<% end %> 
 <% end %>
+
+<div class = "row">
+  <div class = "col-md-4">
+    <div class = "well">
+      <h2><%= @student.name %></h2>
+      <h4>
+        <%= @student.teacher %>'s <%= @student.grade %><sup><% if @student.grade > 3 %><%="th" %><%elsif @student.grade == 3 %><%="rd" %><%elsif @student.grade == 2 %><%="nd" %><%elsif @student.grade == 1 %><%="st" %><% end %></sup> Grade Class
+      </h4>
+      <p><%= @student.bio %></p>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>

@@ -4,7 +4,11 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    if params[:grade] == nil
+      @students = Student.all
+    else
+      @students = Student.where(grade: params[:grade])
+    end
   end
 
   # GET /students/1
@@ -70,6 +74,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :grade, :teacher, :bio)
+      params.require(:student).permit(:name, :grade, :teacher, :bio, :classroom)
     end
 end

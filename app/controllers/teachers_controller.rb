@@ -8,9 +8,7 @@ class TeachersController < ApplicationController
       @teachers = Teacher.all
     else
       @teachers = Teacher.where(classroom: params[:classroom])
-      @teachers.each do |teacher|
-        @students = Student.where(teacher: teacher.name)
-      end
+      @students = Student.where(classroom: params[:classroom])
     end
   end
 

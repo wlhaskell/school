@@ -2,6 +2,12 @@
 
 <h1>Our Great Teachers!</h1>
 
+<% if params[:classroom] != nil %>
+  <ul class="nav nav-pills" role="tablist">
+    <li><%= link_to "Show All Teachers", teachers_path %></li>
+  </ul>
+<% end %>
+
 <% @teachers.each do |teacher| %>
     <div class = "row">
       <div class = "col-md-12">
